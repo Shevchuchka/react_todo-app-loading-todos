@@ -14,7 +14,7 @@ export const ToDo: React.FC<Props> = ({ todo }) => {
   const [loading] = useState(false);
   const [onEdit] = useState(false);
 
-  const completedTodo = todo.completed === true;
+  const completedTodo = todo.completed;
 
   return (
     <div
