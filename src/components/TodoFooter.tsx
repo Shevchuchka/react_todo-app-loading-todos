@@ -42,10 +42,11 @@ export const TodoFooter: React.FC<Props> = ({
     }
   };
 
-  //eslint-disable-next-line
-  function findFilterKey(enumObj: any, value: string): string | undefined {
-    return Object.keys(enumObj).find(key => enumObj[key] === value);
-  }
+  const findFilterKey = (value: string): string | undefined => {
+    return Object.keys(Filter).find(
+      key => Filter[key as keyof typeof Filter] === value,
+    );
+  };
 
   return (
     <footer className="todoapp__footer" data-cy="Footer">
@@ -62,9 +63,9 @@ export const TodoFooter: React.FC<Props> = ({
               selected: filterType === filter,
             })}
             onClick={() => filterFunction(filter)}
-            data-cy={`FilterLink${findFilterKey(Filter, filter)}`}
+            data-cy={`FilterLink${findFilterKey(filter)}`}
           >
-            {findFilterKey(Filter, filter)}
+            {findFilterKey(filter)}
           </a>
         ))}
       </nav>
